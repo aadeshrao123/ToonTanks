@@ -27,6 +27,15 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 private:
-	 class UCapsuleComponent* CapsuleComp;
+	UPROPERTY()
+		class UCapsuleComponent* CapsuleComp;
+
+	UPROPERTY()
+		UStaticMeshComponent* BaseMesh;
+
+	UPROPERTY()
+		UStaticMeshComponent* TurretMesh;
+	UPROPERTY()
+		USceneComponent* ProjectileSpawnpoint;
 
 };
