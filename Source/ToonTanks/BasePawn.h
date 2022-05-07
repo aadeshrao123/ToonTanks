@@ -14,6 +14,20 @@ class TOONTANKS_API ABasePawn : public APawn
 public:
 	// Sets default values for this pawn's properties
 	ABasePawn();
+	// it will only be visible in the bluprint
+	UPROPERTY(VisibleAnywhere)
+		int32 VisibleAnyWhere = 1;
+
+	// it will only be visible in Instance which is placed in the viewport
+	UPROPERTY(VisibleInstanceOnly)
+		int32 VisibleInstanceOnly = 1;
+
+	// It can be edited in the blueprint
+	UPROPERTY(EditAnywhere)
+		int32 EditAnywhere = 1;
+
+
+		
 
 protected:
 	// Called when the game starts or when spawned
@@ -35,6 +49,7 @@ private:
 
 	UPROPERTY()
 		UStaticMeshComponent* TurretMesh;
+
 	UPROPERTY()
 		USceneComponent* ProjectileSpawnpoint;
 
