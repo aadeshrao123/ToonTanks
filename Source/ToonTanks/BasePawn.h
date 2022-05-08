@@ -62,5 +62,7 @@ private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"), Category = "Super Duper Variable")
 		int32 VisibleAnyWhere = 1;
 
+	
+
 
 };
