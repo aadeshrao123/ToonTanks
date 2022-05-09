@@ -24,6 +24,12 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	PlayerInputComponent->BindAxis(TEXT("Turn"), this, &ATank::Turn);
 }
 
+void ATank::BeginPlay()
+{
+	Super::BeginPlay();
+	PlayerControlerRef = Cast<APlayerController>(GetController()); //watch class 127 Casting If you have any doubt
+}
+
 void ATank::Move(float Value)
 {
 	FVector DeltaLocation = FVector::ZeroVector;
