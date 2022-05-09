@@ -22,10 +22,3 @@ ABasePawn::ABasePawn()
 	ProjectileSpawnpoint = CreateDefaultSubobject<USceneComponent>(TEXT("Spawn Point"));
 	ProjectileSpawnpoint->SetupAttachment(TurretMesh);
 }
-
-
-// Called every frame
-void ABasePawn::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-}

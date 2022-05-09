@@ -15,10 +15,6 @@ public:
 	// Sets default values for this pawn's properties
 	ABasePawn();
 
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
-
 private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"), Category = "Components")
 		class UCapsuleComponent* CapsuleComp;

@@ -5,6 +5,9 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "Camera/CameraComponent.h"
 #include "Kismet/GameplayStatics.h"
+#include "DrawDebugHelpers.h"
+
+
 
 
 ATank::ATank()
@@ -27,7 +30,35 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 void ATank::BeginPlay()
 {
 	Super::BeginPlay();
-	PlayerControlerRef = Cast<APlayerController>(GetController()); //watch class 127 Casting If you have any doubt
+	PlayerControllerRef = Cast<APlayerController>(GetController()); //watch class 127 Casting If you have any doubt
+}
+
+void ATank::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+	
+	if (PlayerControllerRef) // Its Important to do to check the pointer is not null
+	{
+		FHitResult HitResult;
+		PlayerControllerRef->GetHitResultUnderCursor
+		(
+			ECollisionChannel::ECC_Visibility,
+			false,
+			HitResult
+		);
+		HitResult.ImpactPoint;
+		DrawDebugSphere
+		(
+			GetWorld(),
+			HitResult.ImpactPoint,
+			7.f,
+			8,
+			FColor::Red,
+			false,
+			-1.f
+		);
+		
+	}
 }
 
 void ATank::Move(float Value)
