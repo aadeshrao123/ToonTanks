@@ -3,7 +3,10 @@
 
 #include "BasePawn.h"
 #include "Components/CapsuleComponent.h"
-#include "DrawDebugHelpers.h"
+//#include "DrawDebugHelpers.h"
+#include "Projectile.h"
+
+
 
 
 
@@ -36,7 +39,7 @@ void ABasePawn::TurretRotation(FVector LookAtTarget)
 void ABasePawn::Fire()
 {
 	//for the check of projectil spawn point 
-	DrawDebugSphere
+	/*DrawDebugSphere
 	(
 		GetWorld(),
 		ProjectileSpawnpoint->GetComponentLocation(),
@@ -45,5 +48,11 @@ void ABasePawn::Fire()
 		FColor::Red, 
 		false, 
 		3.f
-	);
+	);*/
+	GetWorld()->SpawnActor<AProjectile>
+		(
+			ProjectileClass, 
+			ProjectileSpawnpoint->GetComponentLocation(), 
+			ProjectileSpawnpoint->GetComponentRotation()
+		);
 }

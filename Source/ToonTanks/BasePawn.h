@@ -35,4 +35,7 @@ private:
 	// it will only be visible in the blueprint and many more things just read the code
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"), Category = "Super Duper Variable")
 		int32 VisibleAnyWhere = 1;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Combat")
+		TSubclassOf<class AProjectile> ProjectileClass;
 };
