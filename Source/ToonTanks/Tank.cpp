@@ -32,17 +32,17 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 void ATank::BeginPlay()
 {
 	Super::BeginPlay();
-	PlayerControllerRef = Cast<APlayerController>(GetController()); //watch class 127 Casting If you have any doubt
+	TankPlayerController = Cast<APlayerController>(GetController()); //watch class 127 Casting If you have any doubt
 }
 
 void ATank::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	
-	if (PlayerControllerRef) // Its Important to do to check the pointer is not null
+	if (TankPlayerController) // Its Important to do to check the pointer is not null
 	{
 		FHitResult HitResult;
-		PlayerControllerRef->GetHitResultUnderCursor
+		TankPlayerController->GetHitResultUnderCursor
 		(
 			ECollisionChannel::ECC_Visibility,
 			false,
@@ -62,6 +62,14 @@ void ATank::Tick(float DeltaTime)
 		TurretRotation(HitResult.ImpactPoint);
 	}
 }
+
+void ATank::HandleDestruction()
+{
+	Super::HandleDestruction();
+	SetActorHiddenInGame(true);
+	SetActorTickEnabled(false);
+}
+
 
 void ATank::Move(float Value)
 {
