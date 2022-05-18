@@ -5,6 +5,9 @@
 #include "Components/CapsuleComponent.h"
 //#include "DrawDebugHelpers.h"
 #include "Projectile.h"
+#include "Kismet/GameplayStatics.h"
+#include "Particles/ParticleSystem.h"
+
 
 
 
@@ -30,6 +33,10 @@ ABasePawn::ABasePawn()
 
 void ABasePawn::HandleDestruction()
 {
+	if (DeathParticles)
+	{
+		UGameplayStatics::SpawnEmitterAtLocation(this, DeathParticles, GetActorLocation(), GetActorRotation());
+	}
 	//TODO:Need To add visualand sound Effects
 }
 
