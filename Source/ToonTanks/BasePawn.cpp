@@ -13,6 +13,7 @@
 
 
 
+
 // Sets default values
 ABasePawn::ABasePawn()
 {
@@ -37,7 +38,11 @@ void ABasePawn::HandleDestruction()
 	{
 		UGameplayStatics::SpawnEmitterAtLocation(this, DeathParticles, GetActorLocation(), GetActorRotation());
 	}
-	//TODO:Need To add visualand sound Effects
+	if (DeathSound)
+	{
+		UGameplayStatics::PlaySoundAtLocation(this, DeathSound, GetActorLocation());
+	}
+	//TODO:Need To add visual and sound Effects
 }
 
 
